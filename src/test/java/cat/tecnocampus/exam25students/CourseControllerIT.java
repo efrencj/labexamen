@@ -44,7 +44,7 @@ class CourseControllerIT {
                         .contentType(MediaType.APPLICATION_JSON)
                         .content(body))
                 .andExpect(status().isCreated())
-                .andExpect(header().string("Location", "/courses/1/lessons/2"));
+                .andExpect(header().string("Location", "http://localhost:8080/courses/1/lessons/2"));
     }
 
     @Test

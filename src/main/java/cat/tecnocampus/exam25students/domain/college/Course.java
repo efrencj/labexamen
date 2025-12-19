@@ -1,8 +1,10 @@
 package cat.tecnocampus.exam25students.domain.college;
 
 
+import cat.tecnocampus.exam25students.domain.exceptions.LessonPositionOutOfBoundsException;
 import jakarta.persistence.*;
 import java.util.ArrayList;
+import java.util.Comparator;
 import java.util.List;
 
 @Entity
@@ -26,8 +28,10 @@ public class Course {
     }
 
     public void addLesson(Lesson lesson, int position) {
+        lessons.sort(Comparator.comparingInt(Lesson::getPosition));
+
         if (position < 1 || position > lessons.size() + 1) {
-            throw new IllegalArgumentException("Lesson position out of bounds");
+            throw new LessonPositionOutOfBoundsException("Lesson position out of bounds");
         }
 
         for (int i = position - 1; i < lessons.size(); i++) {

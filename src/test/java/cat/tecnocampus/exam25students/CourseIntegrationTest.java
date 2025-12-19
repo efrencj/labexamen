@@ -74,7 +74,7 @@ class CourseIntegrationTest {
                         .contentType(MediaType.APPLICATION_JSON)
                         .content(requestBody))
                 .andExpect(status().isCreated())
-                .andExpect(header().exists("Location"));
+                .andExpect(header().string("Location", "http://localhost:8080/courses/" + courseId + "/lessons/3"));
     }
 
     @Test
