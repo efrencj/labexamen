@@ -24,14 +24,8 @@ public class Lesson {
         this.title = title;
     }
 
-    public void validateTitle() {
-        if (title == null || title.length() < 5) {
-            throw new IllegalArgumentException("The title must be at least 5 characters long");
-        }
-
-        if (!title.isEmpty() && Character.isLetter(title.charAt(0)) && !Character.isUpperCase(title.charAt(0))) {
-            throw new IllegalArgumentException("The title must start with a capital letter");
-        }
+    public boolean startsWithUppercaseLetter() {
+        return title == null || title.isEmpty() || !Character.isLetter(title.charAt(0)) || Character.isUpperCase(title.charAt(0));
     }
 
     public Long getId() {
